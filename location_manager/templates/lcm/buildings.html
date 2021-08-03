@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<div class="animate__animated animate__bounceIn title"  class="title"><h1>Maisons A Charge</h1></div>
+{% endblock %}
+
+{% block content %}
+
+	<table>
+
+		<thead>
+			<tr>
+				<th scope="col">Nom</th>
+				<th scope="col">Adresse</th>
+				<th scope="col">Habitants</th>
+			</tr>	
+		</thead>
+
+		<tbody>
+			{% for building in buildings %}
+					<tr class="">
+						<td {% if building.customers.count > 1 %} rowspan="{{ building.customers.count }}" {% endif %}><a href="{% url 'lcm:building_detail' building.pk %}">{{ building.name }}</a></td>
+						<td {% if building.customers.count > 1 %} rowspan="{{ building.customers.count }}" {% endif %}> {{ building.address }}</td>
+
+						{% if building.customers.count >= 1 %} 
+						
+							{% with building.get_customers|first as first %}
+							<td> <a href="{% url 'lcm:customer_detail' first.pk %}">{{ building.get_customers|first }}</a> </td>
+							{% endwith %}
+
+						{% else %}
+							<td> Vide </td>
+
+						{% endif %}
+					</tr>
+
+					{% if building.customers.count >= 1 %} 
+					
+						{% for customer in building.get_customers|slice:"1:" %}
+						<tr>
+							<td><a href="{% url 'lcm:customer_detail' customer.pk %}">{{ customer.firstname }} {{ customer.lastname }}</a></td>
+						</tr>
+						{% endfor %}						
+
+					{% endif %}
+
+			{% endfor %}
+		</tbody>
+
+	</table>
+
+{% endblock content %}

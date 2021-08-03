@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        {% load static %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Locatia | {{subtitle}}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body class="printable">
+        <header>
+			<div class="animate__animated animate__bounceIn title"  class="title"><h1>Informations Locataire</h1></div>
+        </header>
+
+        <article>
+			<div class="container">
+				<div class="col-md-8 mt-3">
+					<ul class="list">
+						<li class="list-item">
+							<h2>Nom</h2>: {{ customer.lastname }}
+						</li>
+
+						<li class="list-item">
+							<h2>Prénom</h2>: {{ customer.firstname }}
+						</li>
+
+						<li class="list-item">
+							<h2>Maison</h2>: {{ customer.home }}
+						</li>
+
+						<li class="list-item">
+							<h2>Chambre n°</h2>: {{ customer.roomid }}
+						</li>
+
+						<li class="list-item">
+							<h2>Paiements</h2>:
+
+							<table>
+								<tr>
+									<th scope="col">Date</th>
+									<th scope="col">Payé</th>
+								</tr>
+
+								{% for p in customer.get_payments %}
+								<tr>
+									<td> {{p.date }}</td>
+									<td> {% if p.paid %} Oui {%else%} Non {%endif%}</td>
+								</tr>
+								{% endfor %}
+							</table>
+						</li>
+					</ul>
+				</div>
+			</div>		
+		</article>
+    </body>
+</html>

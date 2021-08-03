@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	<div class="animate__animated animate__bounceIn title"  class="title"><h1>Liste des Clients</h1></div>
+{% endblock %}
+
+
+{% block content %}
+	<table>
+
+		<thead>
+			<tr>
+				<th scope="col">Nom</th>
+				<th scope="col">Prénoms</th>
+				<th scope="col">Maisons</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for owner in owners %}
+					<tr class="">
+						<td rowspan="{{owner.buildings.count}}">{{ owner.lastname }}</td>
+						<td rowspan="{{owner.buildings.count}}">{{ owner.firstname }}</td>
+
+						{% with owner.get_buildings|first as first %}
+						<td> <a href="{% url 'lcm:building_detail' first.pk %}">{{ owner.get_buildings|first }}</a> </td>
+						{% endwith %}
+
+
+
+					</tr>
+				{% for building in owner.get_buildings|slice:"1:" %}
+					<tr>
+						<td> <a href="{% url 'lcm:building_detail' building.pk %}">{{ building.name }}</a> </td>
+					</tr>
+				{% endfor %}						
+			{% endfor %}
+		</tbody>
+
+	</table>
+
+{% endblock content %}

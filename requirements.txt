@@ -1,0 +1,9 @@
+asgiref==3.4.1
+cx-Freeze==6.7
+cx-Logging==3.0
+Django==3.2.6
+importlib-metadata==4.6.3
+pdfkit==0.6.1
+pytz==2021.1
+sqlparse==0.4.1
+zipp==3.5.0

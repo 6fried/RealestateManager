@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-8 mt-3 left">
+        <p class="introduction">
+            Locatia vous aide dans tout ce qui est
+            gestion de maisons à louer et de locataires.
+            Vous devez enregistrer dans cet ordre le
+            propriétaire qui est votre client, la maison 
+            à louer et les locataires. Un propriétaire a 
+            droit d'avoir plusieur maisons. Et une maison
+            peut avoir plusieurs locataires. Ce sont là 
+            les principales données qu'il vous faut 
+            connaître pour évoluer. Sur ce, découvrez nos
+            divers propriétaires <a href="{% url 'lcm:owners' %}">ici</a> et les
+            maisons enregistrées <a href="{% url 'lcm:buildings' %}">ici</a>
+        </p>
+    </div>
+</div>
+
+{% endblock content %}

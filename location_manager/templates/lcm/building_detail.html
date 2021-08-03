@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1 class="title">Maison {{ building.name }}</h1>
+	<div class="container">
+		<div class="col-md-8 mt-3">
+			<p class="introduction">
+				<ul class="list">
+					<li class="list-item">
+						<h2>Adresse</h2>: {{building.address}}
+					</li>
+
+					<li class="list-item">
+						<h2>Nombre de chambres</h2>: {{ building.get_customers.count}}
+					</li>
+
+					<!-- Le loyer est il individuel a chaque chambre ou commun à toutes les chambres de la maison ? -->
+
+					<li class="list-item">
+						<h2>Habitants</h2>:
+
+						<ul class="list">
+							{% for customer in building.get_customers %}
+							<li> <a href="{% url 'lcm:customer_detail' customer.pk %}">{{customer.lastname}} {{customer.firstname}}</a> </li>
+							{%endfor%}
+						</ul>
+
+
+					</li>
+
+
+				</ul>
+
+			</p>
+		</div>
+	</div>
+	
+{% endblock content %}
