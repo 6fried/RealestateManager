@@ -15,4 +15,4 @@
 
 ## Usage:
 
-  You just have to put launch the main.exe file. It start the server and a browser instance (commonly firefox).
+  You just have to launch the main.exe file. It start the server and a browser instance (commonly firefox).
