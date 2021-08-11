@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.views import generic
 from .models import Maison, Locataire, Client
 import pdfkit
-# import settings
 
 def index(request):
     return render(request, template_name='lcm/index.html', context={"subtitle":"Home"})

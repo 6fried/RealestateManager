@@ -7,7 +7,7 @@ os.system("call env/Scripts/activate.bat")
 
 class ServerThread(threading.Thread):
     def run(self):
-        os.system("python ../../manage.py runserver")
+        os.system("python manage.py runserver")
 
 def launch_server():
     server_launcher = ServerThread()
